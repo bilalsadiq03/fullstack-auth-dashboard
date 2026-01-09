@@ -18,16 +18,16 @@ export function HeroSection() {
           <Button size="lg">Get Started</Button>
         </Link>
         <Link href="/login">
-          <Button size="lg" variant="outline">
+          <Button size="lg" variant="secondary">
             Login
           </Button>
         </Link>
       </div>
 
       <div className="flex gap-6 mt-12 text-sm text-muted-foreground">
-        <span>🔐 Secure Auth</span>
-        <span>⚡ Optimistic UI</span>
-        <span>📊 Personal Dashboard</span>
+        <span>Secure Auth</span>
+        <span>Optimistic UI</span>
+        <span>Personal Dashboard</span>
       </div>
     </section>
   )

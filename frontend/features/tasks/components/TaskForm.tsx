@@ -24,8 +24,8 @@ export function TaskForm() {
       onSubmit={form.handleSubmit(onSubmit)}
       className="flex gap-2"
     >
-      <Input placeholder="New task title" {...form.register("title")} />
-      <Button type="submit" disabled={createTask.isPending}>
+      <Input className="input" placeholder="New task title" {...form.register("title")} />
+      <Button type="submit" disabled={createTask.isPending} className="btn-primary px-4 py-2">
         {
             createTask.isPending ? "Adding" : "Add"
         }

@@ -64,7 +64,7 @@ export function SignupForm() {
               <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="John Doe"
-                className="pl-9"
+                className="pl-9 input"
                 {...form.register("name")}
               />
             </div>
@@ -81,7 +81,7 @@ export function SignupForm() {
               <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="you@example.com"
-                className="pl-9"
+                className="pl-9 input"
                 {...form.register("email")}
               />
             </div>
@@ -99,7 +99,7 @@ export function SignupForm() {
               <Input
                 type="password"
                 placeholder="••••••••"
-                className="pl-9"
+                className="pl-9 input"
                 {...form.register("password")}
               />
             </div>
@@ -113,7 +113,7 @@ export function SignupForm() {
           {/* Submit */}
           <Button
             type="submit"
-            className="w-full"
+            className="w-full btn-primary"
             disabled={registerMutation.isPending}
           >
             {registerMutation.isPending

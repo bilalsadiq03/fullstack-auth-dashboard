@@ -62,7 +62,7 @@ export function LoginForm() {
               <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="you@example.com"
-                className="pl-9"
+                className="pl-9 input"
                 {...form.register("email")}
               />
             </div>
@@ -80,7 +80,7 @@ export function LoginForm() {
               <Input
                 type="password"
                 placeholder="••••••••"
-                className="pl-9"
+                className="pl-9 input"
                 {...form.register("password")}
               />
             </div>
@@ -94,7 +94,7 @@ export function LoginForm() {
           {/* Submit */}
           <Button
             type="submit"
-            className="w-full"
+            className="w-full btn-primary"
             disabled={loginMutation.isPending}
           >
             {loginMutation.isPending ? "Signing in..." : "Sign In"}
