@@ -5,3 +5,8 @@ export const registerUser = (data: any) =>
 
 export const loginUser = (data: any) =>
   api.post("/auth/login", data)
+
+export const fetchProfile = async () => {
+  const res = await api.get("/auth/profile")
+  return res.data
+}

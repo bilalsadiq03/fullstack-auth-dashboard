@@ -19,7 +19,7 @@ export function TaskItem({ task }: { task: any }) {
         isCompleted && "bg-muted/50"
       )}
     >
-      <div className="flex items-center gap-3">
+      <div className="flex items-start gap-3">
         <Checkbox
           checked={isCompleted}
           onCheckedChange={() =>
@@ -28,20 +28,37 @@ export function TaskItem({ task }: { task: any }) {
               status: isCompleted ? "pending" : "completed",
             })
           }
+          className="
+      mt-1
+      border-muted-foreground
+      data-[state=checked]:bg-primary
+      data-[state=checked]:border-primary
+      data-[state=checked]:text-primary-foreground
+    "
         />
 
-        <span
-          className={cn(
-            "text-sm",
-            isCompleted &&
+        <div className="flex flex-col">
+          <span
+            className={cn(
+              "text-sm font-medium",
+              isCompleted &&
               "line-through text-muted-foreground"
+            )}
+          >
+            {task.title}
+          </span>
+
+          {task.description && (
+            <p className="text-xs text-muted-foreground mt-1">
+              {task.description}
+            </p>
           )}
-        >
-          {task.title}
-        </span>
+        </div>
       </div>
 
+
       <Button
+        className="hover:bg-red-200"
         size="icon"
         variant="ghost"
         onClick={() => deleteTask.mutate(task._id)}

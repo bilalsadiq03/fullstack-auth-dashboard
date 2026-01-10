@@ -1,7 +1,13 @@
-import { useMutation } from "@tanstack/react-query"
-import { registerUser, loginUser } from "./api"
+import { useMutation, useQuery } from "@tanstack/react-query"
+import { registerUser, loginUser, fetchProfile } from "./api"
 import { toast } from "sonner"
 import { setToken } from "@/lib/auth"
+
+export const useProfile = () =>
+  useQuery({
+    queryKey: ["profile"],
+    queryFn: fetchProfile,
+  })
 
 export const useRegister = () =>
   useMutation({

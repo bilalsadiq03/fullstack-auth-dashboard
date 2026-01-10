@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { Plus } from "lucide-react"
+import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 import { TaskForm } from "@/features/tasks/components/TaskForm"
@@ -10,10 +11,13 @@ import { useTasks, useCreateTask } from "@/features/tasks/hooks"
 
 import { DashboardStats } from "./DashboardStats"
 import { DashboardFilters } from "./DashboardFilters"
+import { Navbar } from "@/components/Navbar"
 
 export default function DashboardPage() {
   const { data: tasks = [], isLoading } = useTasks()
   const createTask = useCreateTask()
+    const [showForm, setShowForm] = useState(false)
+
 
   const [search, setSearch] = useState("")
   const [status, setStatus] = useState<
@@ -44,6 +48,7 @@ export default function DashboardPage() {
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-8">
       {/* Stats */}
+      <Navbar />
       <DashboardStats {...stats} />
 
       {/* Filters + Add */}
@@ -55,19 +60,34 @@ export default function DashboardPage() {
           onStatusChange={setStatus}
         />
 
-        <Button
-        className="btn-primary"
-          onClick={() =>
-            createTask.mutate({ title: "New Task", status: "pending" })
-          }
+        <button
+          onClick={() => setShowForm(!showForm)}
+          className={`${showForm && "bg-red-400"}w-full sm:w-auto flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-6 py-2.5 rounded-lg transition`}
         >
-          <Plus className="h-4 w-4 mr-2" />
-          New Task
-        </Button>
+          {showForm ? <div className="flex justify-center items-center gap-2">
+            <X className="w-5 h-5" />
+            Cancel
+          </div> : (
+            <div className="flex justify-center items-center gap-2">
+              <Plus className="w-5 h-5" />
+              New task
+            </div>
+          
+          )
+
+          }
+        </button>
+
+        
       </div>
 
       {/* Task Creation */}
-      <TaskForm />
+      {showForm && (
+        <div className="bg-card border border-border rounded-xl p-4">
+          <TaskForm onSuccess={() => setShowForm(false)} />
+        </div>
+      )}
+      
 
       {/* Task List */}
       <TaskList tasks={filteredTasks} />
