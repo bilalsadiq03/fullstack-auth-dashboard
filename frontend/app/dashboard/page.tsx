@@ -84,13 +84,13 @@ export default function DashboardPage() {
       {/* Task Creation */}
       {showForm && (
         <div className="bg-card border border-border rounded-xl p-4">
-          <TaskForm onSuccess={() => setShowForm(false)} />
+          <TaskForm  />
         </div>
       )}
       
 
       {/* Task List */}
-      <TaskList tasks={filteredTasks} />
+      <TaskList  />
     </div>
   )
 }
