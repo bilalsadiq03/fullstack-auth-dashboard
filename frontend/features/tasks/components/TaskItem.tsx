@@ -58,12 +58,12 @@ export function TaskItem({ task }: { task: any }) {
 
 
       <Button
-        className="hover:bg-red-200"
+        className="hover:bg-destructive/10"
         size="icon"
         variant="ghost"
         onClick={() => deleteTask.mutate(task._id)}
       >
-        <Trash color="red" className="h-4 w-4 text-destructive" />
+        <Trash color="red" className="h-4 w-4 text-destructive bg-destructive/10" />
       </Button>
     </div>
   )

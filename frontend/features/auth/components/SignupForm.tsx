@@ -47,8 +47,8 @@ export function SignupForm() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">Create an account</CardTitle>
-        <CardDescription>
+        <CardTitle className="text-2xl text-center">Create an account</CardTitle>
+        <CardDescription className="text-center">
           Enter your details to get started
         </CardDescription>
       </CardHeader>
@@ -121,6 +121,24 @@ export function SignupForm() {
               : "Create Account"}
           </Button>
         </form>
+
+
+        <div className="relative m-4">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-border" />
+            </div>
+            <div className="relative flex justify-center text-xs">
+              <span className="px-2 bg-card text-muted-foreground">Already have an account</span>
+            </div>
+          </div>
+
+          {/* Signup Link */}
+          <button
+            onClick={() => router.push("/login")}
+            className="w-full bg-secondary/10 border border-border hover:bg-secondary/20 text-foreground font-medium py-3 rounded-lg transition"
+          >
+            Login
+          </button>
       </CardContent>
     </Card>
   )

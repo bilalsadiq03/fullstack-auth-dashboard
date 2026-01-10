@@ -24,6 +24,10 @@ type LoginFormData = {
 export function LoginForm() {
   const router = useRouter()
 
+  const signUp = () => {
+    router.push('/register')
+  }
+
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -100,6 +104,26 @@ export function LoginForm() {
             {loginMutation.isPending ? "Signing in..." : "Sign In"}
           </Button>
         </form>
+
+        <div className="relative m-4">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-border" />
+            </div>
+            <div className="relative flex justify-center text-xs">
+              <span className="px-2 bg-card text-muted-foreground">New here?</span>
+            </div>
+          </div>
+
+          {/* Signup Link */}
+          <button
+            onClick={() => router.push("/register")}
+            className="w-full bg-secondary/10 border border-border hover:bg-secondary/20 text-foreground font-medium py-3 rounded-lg transition"
+          >
+            Create Account
+          </button>
+
+
+        
       </CardContent>
     </Card>
   )
